@@ -48,13 +48,13 @@ public class OrderFormStep1 {
     }
     // Метод ввода адреса доставки для создания заказа
     public void setAddress (String address){
-        driver.findElement(addressInput).sendKeys(address);
+            driver.findElement(addressInput).sendKeys(address);
     }
     // Метод выбора станции метро для создания заказа
     public void selectMetroStation (String metro){
-        driver.findElement(metroSelectSearch).sendKeys(metro);
-        By locator = By.xpath(".//div[@class='select-search__select']");
-        driver.findElement(locator).click();
+            driver.findElement(metroSelectSearch).sendKeys(metro);
+            By locator = By.xpath(".//div[@class='select-search__select']");
+            driver.findElement(locator).click();
     }
     // Метод ввода номера телефона для создания заказа
     public void setPhoneNumber (String phoneNumber){
@@ -63,5 +63,15 @@ public class OrderFormStep1 {
     // Метод нажимает кнопку Далее на форме ввода данных для создания заказа
     public void clickNextButton (){
         driver.findElement(orderFormNextButton).click();
+    }
+    // Метод заполняет первую форму создания заказа и нажимает кнопку Далее
+    public void setOrderFormStep1 (String name, String surname, String address, String metro, String phoneNumber){
+        waitForLoadOrderForm();
+        setName(name);
+        setSurname(surname);
+        setAddress(address);
+        selectMetroStation(metro);
+        setPhoneNumber(phoneNumber);
+        clickNextButton();
     }
 }

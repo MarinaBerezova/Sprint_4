@@ -65,4 +65,17 @@ public class HomePageSamokat {
         String locator = String.format (".//div[@class='accordion__panel' and @aria-labelledby='%s']/p", accordionHeadingId);
         return driver.findElement(By.xpath(locator)).getText();
     }
+    // Метод нажимает верхнюю или нижнюю кнопку Заказать на домашней странице в зависимости от переданного параметра:
+    // * "Use upper Order button"
+    // * "Use bottom Order button"
+    public void clickCreateOrderButton(String useOrderCreationButton){
+        if (useOrderCreationButton == "Use upper Order button"){
+            System.out.println("Тест#: Нажимаю верхнюю кнопку 'Заказать' на домашней странице");
+            clickOrderHeaderButton();
+        } else if (useOrderCreationButton == "Use bottom Order button"){
+            System.out.println("Тест#: Нажимаю нижнюю кнопку 'Заказать' на домашней странице");
+            scrollToOrderBottomButton();
+            clickOrderBottomButton();
+        }
+    }
 }

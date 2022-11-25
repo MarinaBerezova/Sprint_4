@@ -80,4 +80,18 @@ public class OrderFormStep2 {
         System.out.println("Заказываю самокат на следующую неделю:" + date);
         return String.valueOf(date);
     }
+    // Метод заполняет вторую форму создания заказа и нажимает кнопку Далее.
+    // Для поля deliveryDate ожидаются значения: "доставка завтра" или "доставка через неделю"
+    public void setOrderFormStep2 (String deliveryDate, String rentPeriod, String scooterColour, String commentToCourier) {
+        waitForLoadOrderForm();
+        if (deliveryDate == "доставка завтра"){
+            selectDeliveryDate(getTomorrowDate());
+        } else if (deliveryDate == "доставка через неделю") {
+            selectDeliveryDate(getDateAWeekLater());
+        }
+        selectRentPeriod(rentPeriod);
+        selectScooterColour(scooterColour);
+        setCommentToCourier(commentToCourier);
+        clickSubmitButton();
+    }
 }

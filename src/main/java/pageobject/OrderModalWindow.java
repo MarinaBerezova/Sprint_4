@@ -24,6 +24,7 @@ public class OrderModalWindow {
     }
     // Метод нажимает кнопку подтверждения заказа
     public void clickModalConfirmButton (){
+        waitForLoadModalWindow();
         driver.findElement(modalConfirmButton).click();
     }
     // Метод проверяет текст всплывающего окна при создании заказа
